@@ -31,10 +31,17 @@ app.use(bodyParser.json())
 
 io.on('connection', socket => {
   socket.on('message', msg => {
-    console.log('msg recieved', msg)
+    console.log('msg recieved', msg);
     io.emit("new_message", msg);
   })
 });
+
+io.on('connection', socket => {
+  socket.on('newConversation', user => {
+    console.log('new receiver', user);
+    io.emit('receiver', user);
+  })
+})
 
 io.on('connection', (socket) => {
   console.log('A client just joined on', socket.id);

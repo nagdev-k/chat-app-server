@@ -27,10 +27,6 @@ module.exports = {
   uploadImage: (req, res) => {
     const { file } = req;
     const { originalname } = file;
-    // console.log('image request-----', req);
-    // res.send(file)
-    // const { file } = req.file;
-    // const { senderId, conversationId, message } = req.body;
     const newMessage = new Message();
     const indexOfHash = originalname.indexOf('-');
     newMessage.author = originalname.substring(0, indexOfHash);
